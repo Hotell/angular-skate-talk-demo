@@ -6,3 +6,7 @@
 export const environment = {
   production: false
 };
+
+const { attachShadow } = HTMLElement.prototype;
+
+export const hasNativeShadowDomSupport = attachShadow && attachShadow.toString().indexOf( 'native code' ) > -1;
