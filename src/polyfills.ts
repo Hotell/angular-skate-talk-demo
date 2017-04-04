@@ -39,7 +39,10 @@
 /** IE10 and IE11 requires the following to support `@angular/animation`. */
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
-
+// Load Custom Elements es5 adapter
+import 'webcomponents.js/custom-elements-es5-adapter.js';
+// Load polyfills; note that "loader" will load these async
+import 'webcomponents.js/webcomponents-loader.js';
 /** Evergreen browsers require these. **/
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';

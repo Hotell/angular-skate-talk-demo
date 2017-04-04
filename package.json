@@ -27,6 +27,7 @@
     "rxjs": "^5.1.0",
     "skatejs": "4.6.7",
     "snarkdown": "1.2.2",
+    "webcomponents.js": "https://github.com/webcomponents/webcomponentsjs",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
