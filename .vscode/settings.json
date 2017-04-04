@@ -1,0 +1,5 @@
+{
+  "vsicons.presets.angular": true,
+  "tslint.autoFixOnSave": true,
+  "tslint.enable": true
+}
