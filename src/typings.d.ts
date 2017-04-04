@@ -9,6 +9,8 @@ interface Window {
 }
 
 
+declare module '*.css';
+
 declare namespace ShadyCSS {
   interface IntrinsicElements {
     'custom-style': HTMLElement,

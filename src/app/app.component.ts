@@ -8,4 +8,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular & Skate! Life is once again Great!';
   showCounter = true;
+
+  user = {
+    name: 'Rodney Mullen',
+    age: 40,
+    tricks: []
+  };
+
+  private learnTrick(trickName: string ): void {
+    this.user.tricks = [...this.user.tricks, trickName];
+  }
 }

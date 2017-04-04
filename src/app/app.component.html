@@ -10,3 +10,15 @@
 <sk-user name="Martin" age="100">
   <img src="./assets/skate-deck.jpg">
 </sk-user>
+
+<div class="flex">
+  <sk-user [name]="user.name" [age]="user.age" (new-trick)="learnTrick($event.detail)">
+    <img src="./assets/skate-deck.jpg">
+  </sk-user>
+  <section>
+    <h4>Knows Tricks:</h4>
+    <ul>
+      <li *ngFor="let trick of user.tricks">{{ trick }}</li>
+    </ul>
+  </section>
+</div>

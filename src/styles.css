@@ -4,3 +4,10 @@
 img {
   width: 200px;
 }
+
+
+button {
+  padding: .5em;
+  border-radius: .25em;
+  font-size: 1rem;
+}
