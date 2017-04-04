@@ -1,6 +1,12 @@
 <h1>
   {{title}}
 </h1>
-<div>
+
+<div *ngIf="showCounter">
   <sk-counter></sk-counter>
 </div>
+<button (click)="showCounter=!showCounter">toggle counter</button>
+
+<sk-user name="Martin" age="100">
+  <img src="./assets/skate-deck.jpg">
+</sk-user>
