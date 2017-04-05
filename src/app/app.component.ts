@@ -23,10 +23,6 @@ export class AppComponent {
     tricks: []
   };
 
-  ngAfterViewInit() {
-    console.log(this.myObservable);
-  }
-
   private learnTrick(trickName: string ): void {
     this.user.tricks = [...this.user.tricks, trickName];
   }

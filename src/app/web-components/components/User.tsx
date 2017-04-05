@@ -17,13 +17,13 @@ const styles = `
   }
 `;
 type Props = {
-  wat: string,
+  name: string,
   age: number
 };
 
-const List = ({wat, age}: Props) => (
+const List = ({name, age}: Props) => (
     <ul>
-      <li>Name: {wat}</li>
+      <li>Name: {name}</li>
       <li>Age: {age}</li>
     </ul>
 );
@@ -40,7 +40,7 @@ class User extends Component<Props> {
   name: string;
   age: number;
 
-  trickName: string;
+  private trickName: string;
 
   private addNewTrick = ( trick: string ) => {
     return ( ev: Event ) => {
@@ -59,7 +59,7 @@ class User extends Component<Props> {
     return (
       <div>
         <style>{styles}</style>
-        <List wat={name} age={age}/>
+        <List name={name} age={age}/>
         <form onSubmit={this.addNewTrick(this.trickName)}>
           <div class='form-item'>
             <label>Learn new trick:</label>
