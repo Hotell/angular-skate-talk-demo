@@ -9,7 +9,7 @@
 
 **Talk Slides:**
 
--> [Donwload](Typesafe_Reactive_WebComponents_Martin-Hochel.pdf)
+-> [Donwload](slides/Typesafe_Reactive_WebComponents_Martin-Hochel.pdf)
 
 
  ## Start
