@@ -51,7 +51,7 @@ class User extends Component<Props> {
   }
 
   private handleInput = (ev: KeyboardEvent) => {
-      this.trickName = (ev.target as HTMLInputElement).value;
+    this.trickName = (ev.target as HTMLInputElement).value;
   }
 
   renderCallback() {

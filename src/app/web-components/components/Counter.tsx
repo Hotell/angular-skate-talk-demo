@@ -1,4 +1,4 @@
-import {h, Component, prop} from 'skatejs';
+import { h, Component, prop } from 'skatejs';
 
 type Props = {};
 class Counter extends Component<Props> {
@@ -36,6 +36,7 @@ class Counter extends Component<Props> {
   }
 
 }
+
 
 export {
   Counter

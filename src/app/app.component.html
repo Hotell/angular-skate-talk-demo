@@ -2,10 +2,21 @@
   {{title}}
 </h1>
 
-<div *ngIf="showCounter">
-  <sk-counter></sk-counter>
-</div>
-<button (click)="showCounter=!showCounter">toggle counter</button>
+<section>
+  <h2>Countersss</h2>
+  <div *ngIf="showCounter">
+    <sk-counter></sk-counter>
+  </div>
+
+  <div>
+    <sk-counter-observable
+      [counter$]="myObservable"
+    ></sk-counter-observable>
+  </div>
+
+  <button (click)="showCounter=!showCounter">toggle counter</button>
+
+</section>
 
 <sk-user name="Martin" age="100">
   <img src="./assets/skate-deck.jpg">
