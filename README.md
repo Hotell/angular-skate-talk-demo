@@ -1,28 +1,25 @@
-# AngularSkate
+# Angular + SkateJS Talk ( demo )
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+ > This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+ > But has needed to be ejected because ng cli doesn't accounts for JSX files -> tsx within its webpack config
 
-## Development server
+**SkateJS Project:**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+-> https://github.com/skatejs/skatejs
 
-## Code scaffolding
+**Talk Slides:**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+-> [Donwload](Typesafe_Reactive_WebComponents_Martin-Hochel.pdf)
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+ ## Start
 
-## Running unit tests
+ `yarn start`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ `open localhost:4200`
 
-## Running end-to-end tests
+ skate web components are -> `src/app/web-components/components`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+ Play around and profit!
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ Oh and don't hasitate to ask me any question on [Twitter](https://twitter.com/martin_hotell)
