@@ -2,16 +2,14 @@
   {{title}}
 </h1>
 
-<section>
+<section *ngIf="false">
   <h2>Countersss</h2>
   <div *ngIf="showCounter">
     <sk-counter></sk-counter>
   </div>
 
   <div>
-    <sk-counter-observable
-      [counter$]="myObservable"
-    ></sk-counter-observable>
+    <sk-counter-observable [counter$]="myObservable"></sk-counter-observable>
   </div>
 
   <button (click)="showCounter=!showCounter">toggle counter</button>
@@ -22,10 +20,15 @@
   <img src="./assets/skate-deck.jpg">
 </sk-user>-->
 
-<div class="flex">
-  <sk-user [name]="user.name" [age]="user.age" (new-trick)="learnTrick($event.detail)">
+<div class="flex padding">
+  <sk-user
+    [name]="user.name"
+    [age]="user.age"
+    (new-trick)="learnTrick($event.detail)"
+  >
     <img src="./assets/skate-deck.jpg">
   </sk-user>
+
   <section>
     <h4>Knows Tricks:</h4>
     <ul>

@@ -1,6 +1,9 @@
 .flex {
   display: flex;
 }
+.padding {
+  padding: 1rem;
+}
 
 .flex-column {
  flex-flow: column;
