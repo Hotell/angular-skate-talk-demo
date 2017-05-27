@@ -1,4 +1,4 @@
-import { Component, ComponentProps, define, emit, h, prop as skProp, PropOptions } from 'skatejs';
+import { Component, ComponentProps, define, emit, h, props, PropOptions } from 'skatejs';
 
 
 import { Constructor } from './types';
@@ -14,13 +14,13 @@ export function renderCss(): MethodDecorator {
     descriptor: TypedPropertyDescriptor<T>,
   ) {
     return {
-      value( this: { css?: string, shadyCss?: string | void } & object ) {
+      value( this: { css?: string, shadyCss?: string } & object ) {
         // we preffer shadyCss which is present if Css Mixin is used, otherwise fallback to css property
         // tslint:disable-next-line:no-invalid-this
         const css = 'shadyCss' in this ? this.shadyCss : this.css;
 
         // tslint:disable-next-line:no-invalid-this
-        return [ h( 'style', css ) ].concat( descriptor.value.call( this, this ) );
+        return [ h( 'style', null, css ) ].concat( descriptor.value.call( this, this ) );
       }
     };
   };
@@ -38,7 +38,7 @@ export function customElement( name: string ): ClassDecorator {
 }
 
 export type PropCtorFn = () => any[] | object | number | boolean | string;
-export type PropConfig = PropOptions<any, any> & { type?: PropCtorFn };
+export type PropConfig = PropOptions & { type?: PropCtorFn };
 export type PropType = 'string' | 'number' | 'object' | 'array' | 'boolean';
 const identityFn = <T>( _: T ) => _;
 
@@ -46,12 +46,15 @@ export function prop( config: PropConfig = {} ): PropertyDecorator {
   return function( targetProto: { [ key: string ]: any } & Component<any>, propertyKey: string | symbol ) {
     const { type, ...skPropConfig } = config;
     const configType = parseType( type );
-    const skatePropTypeFn = skProp[ configType ] || identityFn;
+    const baseSkatePropTypeDefinition = props[ configType ] || {};
     const Ctor = targetProto.constructor as typeof Component;
     const existingProps = ( Ctor.props || {} ) as ComponentProps<any, any>;
     const newProps = {
       ...existingProps,
-      ...{ [ propertyKey ]: skatePropTypeFn( skPropConfig ) }
+      ...{ [ propertyKey ]: {
+        skPropConfig,
+        ...baseSkatePropTypeDefinition
+      } }
     };
     Object.defineProperty(
       Ctor,
@@ -141,7 +144,7 @@ export function colored(): ClassDecorator {
 
     const newProps = {
       ...( Target as any ).props,
-      ...{ color: skProp.string<any, string>( { attribute: { source: true } } ) }
+      ...{ color: props.string }
     };
     Object.defineProperty( Target, 'props', {
       configurable: true,
@@ -157,7 +160,7 @@ export function disabled(): ClassDecorator {
 
     const newProps = {
       ...Target.props,
-      ...{ disabled: skProp.boolean( { attribute: true } ) }
+      ...{ disabled: props.boolean }
     };
     Object.defineProperty( Target, 'props', {
       configurable: true,
@@ -188,7 +191,7 @@ export function shadyCssStyles() {
       renderCallback: {
         value( this: { shadyCss: string }, ...args: any[] ) {
           // tslint:disable-next-line:no-invalid-this
-          return [ h( 'style', this.shadyCss ) ].concat( originalRenderCallback.apply( this, args ) );
+          return [ h( 'style', null, this.shadyCss ) ].concat( originalRenderCallback.apply( this, args ) );
         }
       }
     } );

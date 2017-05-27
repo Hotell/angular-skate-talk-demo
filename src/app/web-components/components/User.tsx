@@ -37,13 +37,11 @@ class User extends Component<Props> {
       trickName: props.string,
     };
   }
-  name: string;
-  age: number;
 
   private trickName: string;
 
   renderCallback() {
-    const {age, name} = this;
+    const {age, name} = this.props;
     return (
       <div>
         <style>{styles}</style>
