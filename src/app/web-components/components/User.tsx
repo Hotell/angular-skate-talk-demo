@@ -1,4 +1,4 @@
-import { Component, h, prop, emit } from 'skatejs';
+import { Component, h, props, emit } from 'skatejs';
 
 const styles = `
   .form-item {
@@ -32,27 +32,15 @@ class User extends Component<Props> {
   static get is(){ return 'sk-user'; }
   static get props (){
     return {
-      name: prop.string({attribute: {source: true}}),
-      age: prop.number({attribute: {source: true}}),
-      trickName: prop.string(),
+      name: props.string,
+      age: props.number,
+      trickName: props.string,
     };
   }
   name: string;
   age: number;
 
   private trickName: string;
-
-  private addNewTrick = ( trick: string ) => {
-    return ( ev: Event ) => {
-      ev.preventDefault();
-      emit( this, 'new-trick', { detail: trick } );
-      this.trickName = '';
-    };
-  }
-
-  private handleInput = (ev: KeyboardEvent) => {
-    this.trickName = (ev.target as HTMLInputElement).value;
-  }
 
   renderCallback() {
     const {age, name} = this;
@@ -67,10 +55,22 @@ class User extends Component<Props> {
           </div>
         </form>
         <div>
-          <slot></slot>
+          <slot/>
         </div>
       </div>
     );
+  }
+
+   private addNewTrick = ( trick: string ) => {
+    return ( ev: Event ) => {
+      ev.preventDefault();
+      emit( this, 'new-trick', { detail: trick } );
+      this.trickName = '';
+    };
+  }
+
+  private handleInput = (ev: KeyboardEvent) => {
+    this.trickName = (ev.target as HTMLInputElement).value;
   }
 }
 

@@ -1,4 +1,4 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, props } from 'skatejs';
 
 type Props = {
   count?: number,
@@ -9,8 +9,8 @@ class Counter extends Component<Props> {
 
   static get props(){
     return {
-      count: prop.number(),
-      repeatInterval: prop.number(),
+      count: props.number,
+      repeatInterval: props.number,
     };
   }
 

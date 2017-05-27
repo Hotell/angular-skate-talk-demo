@@ -1,4 +1,4 @@
-import { h, Component, prop } from 'skatejs';
+import { h, Component, props } from 'skatejs';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 type Props = {
@@ -9,8 +9,8 @@ class CounterObservable extends Component<Props> {
   static get is(){ return 'sk-counter-observable'; }
   static get props () {
     return {
-      counter$: prop.object(),
-      count: prop.number(),
+      counter$: props.object,
+      count: props.number,
     };
   }
 
@@ -19,14 +19,14 @@ class CounterObservable extends Component<Props> {
 
   private counterSubscription: Subscription;
 
-  updatedCallback( prevProps: Props ) {
+  propsUpdatedCallback( nextProps: Props, prevProps: Props ) {
     // init phase
     if ( !prevProps ) {
       this.counterSubscription = this.counter$.subscribe(( num ) => {
         this.count = num;
       } );
     }
-    return super.updatedCallback( prevProps );
+    return super.propsUpdatedCallback(nextProps, prevProps);
   }
 
   disconnectedCallback() {

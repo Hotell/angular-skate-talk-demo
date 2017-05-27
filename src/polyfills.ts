@@ -40,9 +40,9 @@
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 // Load Custom Elements es5 adapter
-import 'webcomponents.js/custom-elements-es5-adapter.js';
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js';
 // Load polyfills; note that "loader" will load these async
-import 'webcomponents.js/webcomponents-loader.js';
+// import 'webcomponents.js/webcomponents-loader.js';
 /** Evergreen browsers require these. **/
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
@@ -58,6 +58,8 @@ import 'core-js/es7/reflect';
  */
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
+
+import '@webcomponents/webcomponentsjs/webcomponents-sd-ce.js';
 
 
 /***************************************************************************************************

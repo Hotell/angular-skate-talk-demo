@@ -5,15 +5,15 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const postcssUrl = require('postcss-url');
 
-const {NoEmitOnErrorsPlugin, LoaderOptionsPlugin} = require('webpack');
-const {GlobCopyWebpackPlugin, BaseHrefWebpackPlugin} =
-    require('@angular/cli/plugins/webpack');
-const {CommonsChunkPlugin} = require('webpack').optimize;
-const {AotPlugin} = require('@ngtools/webpack');
+const { NoEmitOnErrorsPlugin, LoaderOptionsPlugin } = require('webpack');
+const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } =
+  require('@angular/cli/plugins/webpack');
+const { CommonsChunkPlugin } = require('webpack').optimize;
+const { AotPlugin } = require('@ngtools/webpack');
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 const entryPoints =
-    ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
+  ["inline", "polyfills", "sw-register", "styles", "vendor", "main"];
 const baseHref = "";
 const deployUrl = "";
 
@@ -22,8 +22,8 @@ const deployUrl = "";
 module.exports = {
   "devtool": "source-map",
   "resolve":
-      {"extensions": [".ts", ".tsx", ".js"], "modules": ["./node_modules"]},
-  "resolveLoader": {"modules": ["./node_modules"]},
+  { "extensions": [".ts", ".tsx", ".js"], "modules": ["./node_modules"] },
+  "resolveLoader": { "modules": ["./node_modules"] },
   "entry": {
     "main": ["./src/main.ts"],
     "polyfills": ["./src/polyfills.ts"],
@@ -42,8 +42,8 @@ module.exports = {
         "loader": "source-map-loader",
         "exclude": [/\/node_modules\//]
       },
-      {"test": /\.json$/, "loader": "json-loader"},
-      {"test": /\.html$/, "loader": "raw-loader"},
+      { "test": /\.json$/, "loader": "json-loader" },
+      { "test": /\.html$/, "loader": "raw-loader" },
       {
         "test": /\.(eot|svg)$/,
         "loader": "file-loader?name=[name].[hash:20].[ext]"
@@ -154,7 +154,7 @@ module.exports = {
     new GlobCopyWebpackPlugin({
       "patterns": ["assets", "favicon.ico"],
       "globOptions": {
-        "cwd": "/Users/hotell/Devel/labs/angular-beers-talk/angular-skate/src",
+        "cwd": "/home/hotell/Devel/github/Hotell/angular-skate-talk-demo/src",
         "dot": true,
         "ignore": "**/.gitkeep"
       }
@@ -187,14 +187,14 @@ module.exports = {
       }
     }),
     new BaseHrefWebpackPlugin({}),
-    new CommonsChunkPlugin({"name": "inline", "minChunks": null}),
+    new CommonsChunkPlugin({ "name": "inline", "minChunks": null }),
     new CommonsChunkPlugin({
       "name": "vendor",
       "minChunks": (module) => module.resource &&
-                               module.resource.startsWith(nodeModules),
+        module.resource.startsWith(nodeModules),
       "chunks": ["main"]
     }),
-    new ExtractTextPlugin({"filename": "[name].bundle.css", "disable": true}),
+    new ExtractTextPlugin({ "filename": "[name].bundle.css", "disable": true }),
     new LoaderOptionsPlugin({
       "sourceMap": false,
       "options": {
@@ -214,7 +214,7 @@ module.exports = {
               } else if (baseHref.match(/:\/\//)) {
                 // If baseHref contains a scheme, include it as is.
                 return baseHref.replace(/\/$/, '') +
-                       `/${deployUrl}/${URL}`.replace(/\/\/+/g, '/');
+                  `/${deployUrl}/${URL}`.replace(/\/\/+/g, '/');
               } else {
                 // Join together base-href, deploy-url and the original URL.
                 // Also dedupe multiple slashes into single ones.
@@ -223,15 +223,15 @@ module.exports = {
             }
           })
         ],
-        "sassLoader": {"sourceMap": false, "includePaths": []},
-        "lessLoader": {"sourceMap": false},
+        "sassLoader": { "sourceMap": false, "includePaths": [] },
+        "lessLoader": { "sourceMap": false },
         "context": ""
       }
     }),
     new AotPlugin({
       "mainPath": "main.ts",
       "hostReplacementPaths":
-          {"environments/environment.ts": "environments/environment.ts"},
+      { "environments/environment.ts": "environments/environment.ts" },
       "exclude": [],
       "tsConfigPath": "src/tsconfig.app.json",
       "skipCodeGeneration": true

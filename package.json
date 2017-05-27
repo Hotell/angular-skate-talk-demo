@@ -22,12 +22,12 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
-    "@skatejs/web-components": "1.0.0",
+    "@webcomponents/webcomponentsjs": "1.0.1",
     "core-js": "^2.4.1",
+    "preact": "8.1.0",
     "rxjs": "^5.1.0",
-    "skatejs": "4.6.7",
+    "skatejs": "5.0.0-alpha.7",
     "snarkdown": "1.2.2",
-    "webcomponents.js": "https://github.com/webcomponents/webcomponentsjs",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
