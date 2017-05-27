@@ -1,4 +1,5 @@
 import { Component, h, props, emit } from 'skatejs';
+import { prop } from '../skate-decorators';
 
 const styles = `
   .form-item {
@@ -37,10 +38,14 @@ class User extends Component<Props> {
       trickName: props.string,
     };
   }
+  // @prop({type: String}) name: string;
+  // @prop({type: Number}) age: number;
+  // @prop({type: String}) private trickName: string;
 
   private trickName: string;
 
   renderCallback() {
+    // const {age, name} = this;
     const {age, name} = this.props;
     return (
       <div>
