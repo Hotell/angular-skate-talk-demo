@@ -2,6 +2,11 @@
   {{title}}
 </h1>
 
+<app-user
+  [name]="user.name"
+  [age]="user.age"
+></app-user>
+
 <section *ngIf="false">
   <h2>Countersss</h2>
   <div *ngIf="showCounter">
