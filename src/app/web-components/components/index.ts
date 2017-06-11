@@ -6,3 +6,7 @@ import {User} from './User';
 define(Counter);
 define(CounterObservable);
 define(User);
+
+export {UserDirective} from './User.ng-adapter'
+export {CounterDirective} from './Counter.ng-adapter'
+export {CounterObservableDirective} from './CounterObservable.ng-adapter'
