@@ -1,12 +1,12 @@
 import { h, Component, props } from 'skatejs';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
-type Props = {
+export type Props = {
   counter$: Observable<number>,
 };
 class CounterObservable extends Component<Props> {
 
-  static get is(){ return 'sk-counter-observable'; }
+  static readonly is = 'sk-counter-observable';
   static get props () {
     return {
       counter$: props.object,

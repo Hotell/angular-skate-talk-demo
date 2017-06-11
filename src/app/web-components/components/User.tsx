@@ -1,5 +1,5 @@
 import { Component, h, props, emit } from 'skatejs';
-import { prop } from '../skate-decorators';
+import { prop, event, EventEmitter } from '../skate-decorators';
 
 const styles = `
   .form-item {
@@ -17,7 +17,7 @@ const styles = `
     font-size: 1.1em;
   }
 `;
-type Props = {
+export type Props = {
   name: string,
   age: number
 };
@@ -29,8 +29,9 @@ const List = ({name, age}: Props) => (
     </ul>
 );
 
+
 class User extends Component<Props> {
-  static get is(){ return 'sk-user'; }
+  static readonly is = 'sk-user';
   static get props (){
     return {
       name: props.string,
@@ -38,9 +39,11 @@ class User extends Component<Props> {
       trickName: props.string,
     };
   }
+
   // @prop({type: String}) name: string;
   // @prop({type: Number}) age: number;
   // @prop({type: String}) private trickName: string;
+  // @event() newTrick = new EventEmitter<string>();
 
   private trickName: string;
 
@@ -67,6 +70,8 @@ class User extends Component<Props> {
    private addNewTrick = ( trick: string ) => {
     return ( ev: Event ) => {
       ev.preventDefault();
+      // you can use this convenient syntax if u r using decorators
+      // this.newTrick.emit(trick)
       emit( this, 'new-trick', { detail: trick } );
       this.trickName = '';
     };

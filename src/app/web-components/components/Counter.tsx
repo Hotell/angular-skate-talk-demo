@@ -1,11 +1,11 @@
 import { h, Component, props } from 'skatejs';
 
-type Props = {
+export type Props = {
   count?: number,
   repeatInterval?: number,
 };
 class Counter extends Component<Props> {
-  static get is(){ return 'sk-counter'; }
+  static readonly is = 'sk-counter';
 
   static get props(){
     return {
